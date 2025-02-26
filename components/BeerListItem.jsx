@@ -1,41 +1,58 @@
-import { StyleSheet, Text, View, Pressable, Image } from 'react-native'
+import { StyleSheet, Text, View, Pressable, Image, Platform } from 'react-native'
 import React from 'react'
+
+import imageMapping from '../utils/imageMapping';
 
 import Colors from '../constants/colors'
 import Abv from './Abv'
 import BeerColor from './BeerColor'
+import Card from './ui/Card';
 
 import Typography from '../constants/typography'
 
-export default function BeerListItem() {
+export default function BeerListItem({beer}) {
+    console.log(beer);
+    const image = imageMapping[beer.image_url];
   return (
-    <View style={styles.beerListItem}>
-      <Pressable>
+    <Card style={styles.beerListItem}>
+      <Pressable 
+        android_ripple={{color: Colors.form}}
+        style={({pressed}) => [styles.innerContainer, pressed ? styles.pressed : null]}
+      >
         <View style={styles.imageContainer}>
-            <Image source={require('../assets/v2/2.png')} style={styles.imagePreview} />
+            <Image source={image} style={styles.imagePreview} />
         </View>
         <View style={styles.beerInfo}>
-            <Text style={Typography.h3}>Small Batch: Mandarina Lager</Text>
-            <Text style={Typography.p3}>Pithy Pale Pilsner.</Text>
+            <View>
+                <Text style={Typography.h3}>{beer.name}</Text>
+                <Text style={Typography.p3}>{beer.tagline}</Text>
+            </View>
             <View style={styles.beerMeta}>
 
-                <Abv abv="5.5" />
-                <BeerColor ebc={10} />
+                <Abv abv={beer.abv} />
+                <BeerColor ebc={beer.ebc} />
             </View>
         </View>
       </Pressable>
-    </View>
+    </Card>
   )
 }
 
 const styles = StyleSheet.create({
     beerListItem:{
-        width:"50%",
-        padding: 16,
+        width: "40%",	
+        padding: 0,
+        flexGrow:1,
         backgroundColor: "white",
         borderRadius: 8,
-        marginBottom: 16,
         elevation:2
+    },
+    innerContainer:{
+        padding: 16,
+        flex:1,
+    },
+    pressed:{
+        opacity: Platform.OS === "android" ? 1 : 0.5,
     },
     imageContainer:{
         width: "100%",
@@ -51,7 +68,9 @@ const styles = StyleSheet.create({
         
     },
     beerInfo:{
-        gap:4
+        flex:1,
+        gap:4,
+        justifyContent: "space-between",
     },
     beerMeta:{
         flexDirection: "row",

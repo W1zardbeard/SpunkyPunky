@@ -55,14 +55,13 @@ export default function BeerColor({ ebc }) {
         console.log("water");
         break;
     }
-    console.log(ebc);
-    console.log(color);
+   
   }, [ebc]);
 
   return (
     <View style={styles.beerColor}>
         <Text>Color</Text>
-        <View style={[styles[color], styles.colorContainer]}></View>
+        <View style={[styles.colorContainer, styles[color]]}></View>
     </View>
   )
 }

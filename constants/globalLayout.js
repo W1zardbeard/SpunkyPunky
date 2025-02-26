@@ -6,6 +6,7 @@ const GlobalLayout = {
     },
     section: {
         marginVertical: 16,
+        flex: 1,
     }
 }
 

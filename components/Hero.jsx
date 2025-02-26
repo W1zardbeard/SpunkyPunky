@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
     hero:{
         width: "100%",
         backgroundColor: Colors.primaryGreen,
-        height: "25%",
+        height: 160,
         paddingHorizontal: GlobalLayout.horizontalPadding,
         justifyContent: "flex-end",
         marginBottom: 24,
