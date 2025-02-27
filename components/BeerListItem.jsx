@@ -53,7 +53,6 @@ const styles = StyleSheet.create({
         padding: 0,
         flexGrow:1,
         backgroundColor: "white",
-     
         elevation:2
     },
     innerContainer:{

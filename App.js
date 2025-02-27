@@ -62,12 +62,17 @@ export default function App() {
 
     <><SafeAreaProvider>
       <StatusBar
-        style="dark"
+        style="light"
         backgroundColor={Colors.primaryGreen}
       />
 
       <NavigationContainer>
-        <Stack.Navigator>
+        <Stack.Navigator
+          screenOptions={{
+            headerTitleAlign: "center",
+            headerTintColor: Colors.white,
+          }}
+        >
           <Stack.Screen
             name="Tabs"
             component={MyTabs}
