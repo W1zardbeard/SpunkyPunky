@@ -79,44 +79,58 @@ const styles = StyleSheet.create({
     },  
   ebc4: {
     backgroundColor: '#F7F761',
+    borderRadius:100,
   },
   ebc6: {
     backgroundColor: '#F6F442',
+    borderRadius:100,
   },
   ebc8: {
     backgroundColor: '#E9E53C',
+    borderRadius:100,
   },
   ebc12: {
     backgroundColor: '#CDBB3B',
+    borderRadius:100,
   },
   ebc16: {
     backgroundColor: '#B48F46',
+    borderRadius:100,
   },
   ebc20: {
     backgroundColor: '#B08042',
+    borderRadius:100,
   },
   ebc26: {
     backgroundColor: '#A76739',
+    borderRadius:100,
   },
   ebc33: {
     backgroundColor: '#7D4C3A',
+    borderRadius:100,
   },
   ebc39: {
     backgroundColor: '#54361E',
+    borderRadius:100,
   },
   ebc47: {
     backgroundColor: '#271D1C',
+    borderRadius:100,
   },
   ebc57: {
     backgroundColor: '#171312',
+    borderRadius:100,
   },
   ebc69: {
     backgroundColor: '#101010',
+    borderRadius:100,
   },
   ebc79: {
     backgroundColor: '#0C0C0C',
+    borderRadius:100,
   },
   ebc138: {
     backgroundColor: '#000000',
+    borderRadius:100,
   },
 });

@@ -1,5 +1,6 @@
 import { StyleSheet, Text, View, Pressable, Image, Platform } from 'react-native'
 import React from 'react'
+import { useNavigation } from '@react-navigation/native';
 
 import imageMapping from '../utils/imageMapping';
 
@@ -11,13 +12,21 @@ import Card from './ui/Card';
 import Typography from '../constants/typography'
 
 export default function BeerListItem({beer}) {
-    console.log(beer);
+    const navigation = useNavigation();
     const image = imageMapping[beer.image_url];
+
+    const handlePress = () => {
+        navigation.navigate("BeerDetails", {
+            beer: beer
+        })
+    }
+
   return (
     <Card style={styles.beerListItem}>
       <Pressable 
         android_ripple={{color: Colors.form}}
         style={({pressed}) => [styles.innerContainer, pressed ? styles.pressed : null]}
+        onPress={handlePress}
       >
         <View style={styles.imageContainer}>
             <Image source={image} style={styles.imagePreview} />
@@ -44,7 +53,7 @@ const styles = StyleSheet.create({
         padding: 0,
         flexGrow:1,
         backgroundColor: "white",
-        borderRadius: 8,
+     
         elevation:2
     },
     innerContainer:{

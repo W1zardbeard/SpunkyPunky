@@ -47,7 +47,7 @@ export default function Home({ navigation }) {
   }, []);
 
 
-  console.log(randomBeers);
+ 
   return (
     <SafeAreaView style={styles.SAV}>
     <ScrollView style={styles.wrapper}  >

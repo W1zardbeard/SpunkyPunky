@@ -23,11 +23,8 @@ export default function EmptyState() {
 const styles = StyleSheet.create({
     emptyState:{
         backgroundColor: Colors.white,
-        borderRadius: 8,
-        padding: 16,
         alignItems: "center",
         justifyContent: "center",
-        elevation: 2,
         gap:16,
     }
 })

@@ -20,6 +20,7 @@ import Home from './screens/Home';
 import Favorites from './screens/Favorites';
 import Search from './screens/Search';
 import FavoritesTest from './screens/FavoritesTest';
+import BeerDetails from './screens/BeerDetails';
 
 function MyTabs() {
   return (
@@ -29,8 +30,9 @@ function MyTabs() {
           headerShown: false
         }}
       />
-      <Tab.Screen name="Favorites" component={Favorites} />
       <Tab.Screen name="Search" component={Search} />
+      <Tab.Screen name="Favorites" component={Favorites} />
+
     </Tab.Navigator>
 
   )
@@ -77,6 +79,7 @@ export default function App() {
           />
 
           <Stack.Screen name="FavoritesTest" component={FavoritesTest} />
+          <Stack.Screen name="BeerDetails" component={BeerDetails} />
         </Stack.Navigator>
       </NavigationContainer>
     </SafeAreaProvider>
