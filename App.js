@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, Image } from 'react-native';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
@@ -13,7 +13,7 @@ const Stack = createNativeStackNavigator();
 
 import Colors from './constants/colors';
 
-
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 //imports for screens
 import Home from './screens/Home';
@@ -24,14 +24,54 @@ import BeerDetails from './screens/BeerDetails';
 
 function MyTabs() {
   return (
-    <Tab.Navigator>
-      <Tab.Screen name="Home" component={Home}
+    <Tab.Navigator
+      screenOptions={{
+        tabBarActiveTintColor: Colors.primaryGreen,
+        tabBarInactiveTintColor: Colors.grey,
+        tabBarStyle: {
+          backgroundColor: Colors.white,
+          borderTopWidth: 0,
+          elevation: 8,
+        },
+        tabBarLabelStyle: {
+          fontFamily: 'Inter-Medium',
+          fontSize: 10,
+        },
+
+      }}
+    >
+      <Tab.Screen
+        name="Home"
+        component={Home}
         options={{
-          headerShown: false
+          headerShown: false,
+          tabBarIcon: ({ focused, color, size }) => {
+            return (
+              <MaterialCommunityIcons name={"home-variant"} color={color} size={24} />
+            );
+          },
         }}
       />
-      <Tab.Screen name="Search" component={Search} />
-      <Tab.Screen name="Favorites" component={Favorites} />
+      <Tab.Screen name="Search" component={Search}
+        options={{
+          headerShown: false,
+          tabBarIcon: ({ focused, color, size }) => {
+            return (
+              <MaterialCommunityIcons name={"magnify"} color={color} size={24} />
+            );
+          },
+        }}
+      />
+      <Tab.Screen name="Favorites" component={Favorites}
+
+        options={{
+          headerShown: false,
+          tabBarIcon: ({ focused, color, size }) => {
+            return (
+              <MaterialCommunityIcons name={"heart"} color={color} size={24} />
+            );
+          },
+        }} />
 
     </Tab.Navigator>
 
@@ -62,12 +102,17 @@ export default function App() {
 
     <><SafeAreaProvider>
       <StatusBar
-        style="dark"
+        style="light"
         backgroundColor={Colors.primaryGreen}
       />
 
       <NavigationContainer>
-        <Stack.Navigator>
+        <Stack.Navigator
+          screenOptions={{
+            headerTitleAlign: "center",
+            headerTintColor: Colors.white,
+          }}
+        >
           <Stack.Screen
             name="Tabs"
             component={MyTabs}

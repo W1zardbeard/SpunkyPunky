@@ -5,9 +5,10 @@ import Colors from '../constants/colors';
 import Typography from '../constants/typography';
 import imageMapping from '../utils/imageMapping';
 
-import Card from '../components/ui/Card';
-import Abv from '../components/Abv';
-import BeerColor from '../components/BeerColor';
+import TitleCard from '../components/TitleCard';
+import InfoCard from '../components/FoodPairingsCard';
+import FoodPairingsCard from '../components/FoodPairingsCard';
+import IngredientsCard from '../components/IngredientsCard';
 
 export default function BeerDetails({route, navigation}) {
 
@@ -30,23 +31,18 @@ export default function BeerDetails({route, navigation}) {
       </View>
 
       <View style={styles.infoWrapper}>
-        <View>
-        <Card>
-         
-            <Text style={[Typography.h1, styles.titleAndDate.title]}>{passedBeer.name}</Text>
-            
-            <Text style={Typography.h3}>"{passedBeer.tagline}"</Text>
-          <Text style={[Typography.h2, styles.titleAndDate.date]}>{passedBeer.first_brewed}</Text>
-          
-          <Text style={Typography.p3}>{passedBeer.description}</Text>
-          <View style={styles.beerMeta}>
-            <Abv abv={passedBeer.abv} />
-            <BeerColor ebc={passedBeer.ebc} />
-          </View>
-         
-        </Card>
+        <View style={styles.infoContainer}>
+        <TitleCard passedBeer={passedBeer} />
 
-    
+        <FoodPairingsCard 
+          title={"Food pairings"}
+          data={passedBeer.food_pairing} 
+        />
+
+        <IngredientsCard 
+          title={"Hops & Malts"}
+          data={passedBeer.ingredients} 
+        />
         </View>
       </View>
     </ScrollView>
@@ -61,41 +57,24 @@ const styles = StyleSheet.create({
   imageContainer:{
     width: "100%",
     height: 300,
-    backgroundColor: Colors.white,
-    paddingTop:40,
+    backgroundColor: Colors.primaryGreen,
+    paddingTop:16,
     paddingBottom:80
   },
   imagePreview:{
     width: "100%",
     height: "100%",
     resizeMode: "contain",
+    
   },
   infoWrapper:{
     padding: 16,
     position: "relative",
-    top: -80, 
+    top: -60, 
     width: "100%"
   },
-  titleAndDate:{
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-between",
-   
-    gap:16,
-    title:{
-      color: Colors.primaryGreen,
-      flexShrink: 2
-    },
-    date:{
-      color: Colors.grey,
-      flex:0
-    }
-  },
-  beerMeta:{
-    flexDirection: "row",
-    gap: 8,
-    marginTop: 8,
-    alignItems: "center",
-    
+  infoContainer:{
+    gap:8
   }
+
 })
