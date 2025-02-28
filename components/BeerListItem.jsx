@@ -1,6 +1,7 @@
 import { StyleSheet, Text, View, Pressable, Image, Platform } from 'react-native'
 import React from 'react'
 import { useNavigation } from '@react-navigation/native';
+import SvgUri from 'react-native-svg';
 
 import imageMapping from '../utils/imageMapping';
 

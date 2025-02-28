@@ -8,21 +8,26 @@ import Colors from '../constants/colors';
 import GlobalLayout from '../constants/globalLayout';
 import Typography from '../constants/typography';
 
-export default function BeerList({beers, title, type}) {
+export default function BeerList({beers, title, type, resultSize}) {  
 
   if (type === "favorites" && beers.length === 0) {
     return (
         <View style={styles.flatListContainer}>
-        <Text style={Typography.h1}>{title}</Text>
-            <EmptyState />
-    </View>
+          <Text style={Typography.h1}>{title}</Text>
+              <EmptyState />
+        </View>
     )
   }
 
 
   return (
     <View style={styles.flatListContainer}>
+      <View style={styles.header}>
         <Text style={Typography.h1}>{title}</Text>
+        {resultSize ? (
+          <Text style={Typography.p1}>{resultSize} results</Text>
+        ) : null}
+      </View>
             <FlatList
                 data={beers}
                 keyExtractor={(item) => item.id.toString()}
@@ -52,4 +57,7 @@ const styles = StyleSheet.create({
         marginVertical: 16,
         gap:8
       },
+      header:{
+        gap:0
+      }
 })
