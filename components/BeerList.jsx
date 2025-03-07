@@ -30,7 +30,7 @@ export default function BeerList({beers, title, type, resultSize}) {
       </View>
             <FlatList
                 data={beers}
-                keyExtractor={(item) => item.id.toString()}
+                keyExtractor={(item) => item.id}
                 renderItem={({ item }) => <BeerListItem beer={item} />}
                 numColumns={2}
                 contentContainerStyle={styles.contentContainerStyle}
