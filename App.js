@@ -6,12 +6,13 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { useFonts } from 'expo-font';
 
-import AppLoading from 'expo-app-loading';
+
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
 
 import Colors from './constants/colors';
+
 
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 
@@ -94,9 +95,7 @@ export default function App() {
     'Inter-SemiBold': require('./node_modules/@expo-google-fonts/inter/Inter_600SemiBold.ttf'),
   });
 
-  if (!fontsLoaded) {
-    return <AppLoading />;
-  }
+
   return (
 
 
