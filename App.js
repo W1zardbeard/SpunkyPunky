@@ -20,8 +20,8 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 import Home from './screens/Home';
 import Favorites from './screens/Favorites';
 import Search from './screens/Search';
-import FavoritesTest from './screens/FavoritesTest';
 import BeerDetails from './screens/BeerDetails';
+import Explore from './screens/Explore';
 
 function MyTabs() {
   return (
@@ -53,12 +53,12 @@ function MyTabs() {
           },
         }}
       />
-      <Tab.Screen name="Search" component={Search}
+      <Tab.Screen name="Explore" component={Explore}
         options={{
-          headerShown: false,
+
           tabBarIcon: ({ focused, color, size }) => {
             return (
-              <MaterialCommunityIcons name={"magnify"} color={color} size={24} />
+              <MaterialCommunityIcons name={"beer"} color={color} size={24} />
             );
           },
         }}
@@ -66,7 +66,7 @@ function MyTabs() {
       <Tab.Screen name="Favorites" component={Favorites}
 
         options={{
-          headerShown: false,
+
           tabBarIcon: ({ focused, color, size }) => {
             return (
               <MaterialCommunityIcons name={"heart"} color={color} size={24} />
@@ -122,8 +122,9 @@ export default function App() {
             }
           />
 
-          <Stack.Screen name="FavoritesTest" component={FavoritesTest} />
+
           <Stack.Screen name="BeerDetails" component={BeerDetails} />
+          <Stack.Screen name="Search" component={Search} />
         </Stack.Navigator>
       </NavigationContainer>
     </SafeAreaProvider>

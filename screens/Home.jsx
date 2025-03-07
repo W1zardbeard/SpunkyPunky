@@ -42,17 +42,16 @@ export default function Home({ navigation }) {
         const response = await axios.get('http://10.0.2.2:5000/api/getFavorites');
        
         const beers = response.data;
-        console.log(beers);
+      
         // grab each beer id from the response and make a request to the API to get the beer details
         const beerDetailsRequests = beers.map(beer => axios.get(`http://10.0.2.2:3333/v2/beers/${beer.beer_id}`));
         const beerDetailsResponses = await Promise.all(beerDetailsRequests);
         const beerDetails = beerDetailsResponses.map(response => response.data);
-        console.log("favorites")
-        console.log(beerDetails);
+
         setFavorites(beerDetails.flat());
         
 
-     
+   
         
       } catch (error) {
         console.log(error);
