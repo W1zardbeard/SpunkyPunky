@@ -23,7 +23,8 @@ export default function BeerList({beers, title, type, resultSize}) {
   return (
     <View style={styles.flatListContainer}>
       <View style={styles.header}>
-        <Text style={Typography.h1}>{title}</Text>
+        {title ? <Text style={Typography.h1}>{title}</Text> : null}
+   
         {resultSize ? (
           <Text style={Typography.p1}>{resultSize} results</Text>
         ) : null}

@@ -1,5 +1,6 @@
 {
   "expo": {
+    "jsEngine": "hermes",
     "name": "SpunkyPunkv2",
     "slug": "SpunkyPunkv2",
     "version": "1.0.0",
