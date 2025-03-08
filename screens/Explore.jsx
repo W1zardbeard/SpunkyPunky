@@ -29,7 +29,7 @@ export default function Explore({ navigation }) {
   }, []);
 
 
-    const [beers, setBeers] = useState([]);
+  const [beers, setBeers] = useState([]);
   const [page, setPage] = useState(1);
   const bottomSheetRef = useRef(null);
 
