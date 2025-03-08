@@ -11,6 +11,7 @@ import BeerList from '../components/BeerList';
 import Colors from '../constants/colors';
 import Button from '../components/ui/Button';
 import FAB from '../components/ui/FAB';
+import Filters from '../components/Filters';
 
 
 
@@ -75,23 +76,46 @@ export default function Explore({ navigation }) {
     <GestureHandlerRootView style={styles.container}>
       <BottomSheetModalProvider>
         <ScrollView style={styles.beerList}>
-         
           <BeerList beers={beers} type="random" />
           <View style={styles.buttonContainer}>
             <Button style={styles.loadMoreButton} onPress={fetchMoreBeers}>Load more</Button>
           </View>
         </ScrollView>
+
+
         <FAB onPress={handlePresentModalPress}>Open Sheet</FAB>
+
+
         <BottomSheetModal
           ref={bottomSheetModalRef}
           onChange={handleSheetChanges}
+          snapPoints={['50%']}
+          detatched={true}
+          enableDynamicSizing={false}
+          enableContentPanningGesture={false}
+          backdropComponent={({ animatedIndex, style }) => (
+          
+          <View
+            style={[
+              style,
+              {
+                backgroundColor: 'rgba(0,0,0,0.5)',
+              },
+            ]}
+          />
+        )}
+
         >
           <BottomSheetView style={styles.contentContainer}>
           
+           <Filters />
+
+
+
+
           </BottomSheetView>
         </BottomSheetModal>
       </BottomSheetModalProvider>
-    
     </GestureHandlerRootView>
   );
 };
