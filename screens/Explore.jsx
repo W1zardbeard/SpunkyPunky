@@ -1,75 +1,105 @@
-import { StyleSheet, Text, View, ScrollView } from 'react-native'
-import React from 'react'
-import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
-import {useEffect, useState} from 'react'
+import { StyleSheet, Text, View, ScrollView } from 'react-native';
+import React, { useCallback, useRef, useState, useEffect,useMemo } from 'react';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import {
+  BottomSheetModal,
+  BottomSheetView,
+  BottomSheetModalProvider,
+} from '@gorhom/bottom-sheet';
 import axios from 'axios';
 import BeerList from '../components/BeerList';
 import Colors from '../constants/colors';
 import Button from '../components/ui/Button';
+import FAB from '../components/ui/FAB';
 
-export default function Explore({navigation}) {
 
-  const [beers, setBeers] = useState([]);
+
+
+
+export default function Explore({ navigation }) {
+  // ref
+  const bottomSheetModalRef = useRef(null);
+
+  // callbacks
+  const handlePresentModalPress = useCallback(() => {
+    bottomSheetModalRef.current?.present();
+  }, []);
+  const handleSheetChanges = useCallback((index) => {
+    console.log('handleSheetChanges', index);
+  }, []);
+
+
+    const [beers, setBeers] = useState([]);
   const [page, setPage] = useState(1);
+  const bottomSheetRef = useRef(null);
 
-  
-  //set navigation options
- navigation.setOptions({
-  title: "Explore",
-  headerShadowVisible: true,
-  headerTitleAlign: "center",
-  headerTintColor: Colors.white,
-  headerStyle: {
-    backgroundColor: Colors.primaryGreen,
-  },
-});
 
+    // Set navigation options
+  navigation.setOptions({
+    title: "Explore",
+    headerShadowVisible: true,
+    headerTitleAlign: "center",
+    headerTintColor: Colors.white,
+    headerStyle: {
+      backgroundColor: Colors.primaryGreen,
+    },
+  });
+
+  // Fetch initial beers data
   useEffect(() => {
     const fetchBeers = async () => {
       try {
         const response = await axios.get("http://10.0.2.2:3333/v2/beers?per_page=30&page=1");
-        console.log(response.data);
         setBeers(response.data);
       } catch (error) {
         console.log(error);
       }
-    }
+    };
 
     fetchBeers();
-  },[]);
+  }, []);
 
-
+  // Fetch more beers data
   const fetchMoreBeers = async () => {
     try {
       const response = await axios.get("http://10.0.2.2:3333/v2/beers?per_page=30&page=" + (page + 1));
       setPage(page + 1);
-      console.log(response.data);
       setBeers([...beers, ...response.data]);
-    }
-    catch (error) {
+    } catch (error) {
       console.log(error);
     }
-  }
+  };
 
-
+  // renders
   return (
-    <ScrollView style={styles.beerList}>
-      <BeerList
-        beers={beers}
-      
-        type="random"
-      />
-      <View style={styles.buttonContainer}>
-        <Button style={styles.loadMoreButton} onPress={fetchMoreBeers}>Load more</Button>
-      </View>
-    </ScrollView>
-  )
-}
+    <GestureHandlerRootView style={styles.container}>
+      <BottomSheetModalProvider>
+        <ScrollView style={styles.beerList}>
+         
+          <BeerList beers={beers} type="random" />
+          <View style={styles.buttonContainer}>
+            <Button style={styles.loadMoreButton} onPress={fetchMoreBeers}>Load more</Button>
+          </View>
+        </ScrollView>
+        <FAB onPress={handlePresentModalPress}>Open Sheet</FAB>
+        <BottomSheetModal
+          ref={bottomSheetModalRef}
+          onChange={handleSheetChanges}
+        >
+          <BottomSheetView style={styles.contentContainer}>
+          
+          </BottomSheetView>
+        </BottomSheetModal>
+      </BottomSheetModalProvider>
+    
+    </GestureHandlerRootView>
+  );
+};
 
-const styles = StyleSheet.create({
+
+  const styles = StyleSheet.create({
   beerList: {
-    paddingBottom:40,
-
+    paddingBottom: 40,
   },
   buttonContainer: {
     alignItems: "center",
@@ -77,6 +107,14 @@ const styles = StyleSheet.create({
     marginTop: 20,
   },
   loadMoreButton: {
-    width:200
-  }
-})
+    width: 200,
+    backgroundColor: Colors.grey,
+  },
+  container: {
+    flex: 1,
+  },
+  contentContainer: {
+    padding: 16,
+  },
+});
+
