@@ -11,7 +11,6 @@ import Typography from '../constants/typography';
 
 //component imports
 import Hero from '../components/Hero';
-
 import BeerList from '../components/BeerList';
 
 export default function Home({ navigation }) {

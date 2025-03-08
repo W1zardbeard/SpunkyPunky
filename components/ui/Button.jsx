@@ -4,9 +4,9 @@ import React from 'react'
 import Colors from '../../constants/colors'
 import Typography from '../../constants/typography'
 
-export default function Button({children, onPress}) {
+export default function Button({children, onPress, style}) {
   return (
-    <View style={styles.buttonContainer}>
+    <View style={[styles.buttonContainer, style]}>
       <Pressable 
         onPress={onPress} 
         style={styles.button} 
@@ -29,8 +29,10 @@ const styles = StyleSheet.create({
         paddingVertical: 16,
         borderRadius: 100,
         overflow: "hidden",
+        textAlign: "center",
     },
     buttonText:{
         color: Colors.white,
+        textAlign: "center",
     }
 })

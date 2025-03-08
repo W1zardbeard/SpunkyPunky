@@ -1,10 +1,11 @@
-import { StyleSheet, Text, View, ScrollView, Button } from 'react-native'
+import { StyleSheet, Text, View, ScrollView } from 'react-native'
 import React from 'react'
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import {useEffect, useState} from 'react'
 import axios from 'axios';
 import BeerList from '../components/BeerList';
 import Colors from '../constants/colors';
+import Button from '../components/ui/Button';
 
 export default function Explore({navigation}) {
 
@@ -58,7 +59,9 @@ export default function Explore({navigation}) {
       
         type="random"
       />
-      <Button title="Load More" onPress={fetchMoreBeers} />
+      <View style={styles.buttonContainer}>
+        <Button style={styles.loadMoreButton} onPress={fetchMoreBeers}>Load more</Button>
+      </View>
     </ScrollView>
   )
 }
@@ -67,5 +70,13 @@ const styles = StyleSheet.create({
   beerList: {
     paddingBottom:40,
 
+  },
+  buttonContainer: {
+    alignItems: "center",
+    marginBottom: 40,
+    marginTop: 20,
+  },
+  loadMoreButton: {
+    width:200
   }
 })
