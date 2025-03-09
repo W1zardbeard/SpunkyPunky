@@ -19,7 +19,6 @@ export default function BeerList({beers, title, type, resultSize}) {
     )
   }
 
-
   return (
     <View style={styles.flatListContainer}>
       <View style={styles.header}>
@@ -29,36 +28,38 @@ export default function BeerList({beers, title, type, resultSize}) {
           <Text style={Typography.p1}>{resultSize} results</Text>
         ) : null}
       </View>
-            <FlatList
-                data={beers}
-                keyExtractor={(item) => item.id}
-                renderItem={({ item }) => <BeerListItem beer={item} />}
-                numColumns={2}
-                contentContainerStyle={styles.contentContainerStyle}
-                columnWrapperStyle={styles.columnWrapperStyle}
-                scrollEnabled={false}
-           
-            />
+      <FlatList
+        data={beers}
+        keyExtractor={(item) => item.id}
+        renderItem={({ item }) => <BeerListItem beer={item} />}
+        numColumns={2}
+        contentContainerStyle={styles.contentContainerStyle}
+        columnWrapperStyle={styles.columnWrapperStyle}
+        scrollEnabled={false}
+      />
     </View>
   )
 }
 
 const styles = StyleSheet.create({
-    contentContainerStyle: {
-        gap: 8,
-      },
-      columnWrapperStyle: {
-        gap: 8,
-      },
-      flatListContainer: {
-        flexGrow: 1,
-        marginBottom: 16,
-        paddingHorizontal: 16,
-        overflow: "visible",
-        marginVertical: 16,
-        gap:8
-      },
-      header:{
-        gap:0
-      }
+  contentContainerStyle: {
+    gap: 8,
+    overflow: "visible",
+  },
+  columnWrapperStyle: {
+    gap: 8,
+    overflow: "visible",
+  },
+  flatListContainer: {
+    flexGrow: 1,
+    marginBottom: 16,
+
+    overflow: "visible",
+    marginVertical: 16,
+    gap: 8,
+  },
+  header: {
+    gap: 0,
+    overflow: "visible", // Ensure header overflow is visible
+  }
 })

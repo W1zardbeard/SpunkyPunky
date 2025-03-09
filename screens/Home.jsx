@@ -67,18 +67,19 @@ export default function Home({ navigation }) {
     <ScrollView style={styles.wrapper}  >
 
         <Hero />
-        <BeerList 
-          beers={favorites} 
-          title={"Your favorites"}
-          type={"favorites"}
-        />
-        <BeerList 
-          beers={randomBeers} 
-          title={"Random beers"}
-          type={"random"}
-        />
-        
-  
+        <View style={styles.contentWrap}>
+          <BeerList 
+            beers={favorites} 
+            title={"Your favorites"}
+            type={"favorites"}
+          />
+          <BeerList 
+            beers={randomBeers} 
+            title={"Random beers"}
+            type={"random"}
+          />
+        </View>    
+    
     </ScrollView>
     </SafeAreaView>
   );
@@ -89,10 +90,15 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.form,
     flex: 1,
     overflow: "visible",
+
   },
   SAV:{
     flex: 1,
     justifyContent: 'flex-start', 
+    overflow: "visible",
+  },
+  contentWrap:{
+    margin: 16,
     overflow: "visible",
   }
 

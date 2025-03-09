@@ -54,7 +54,8 @@ const styles = StyleSheet.create({
         padding: 0,
         flexGrow:1,
         backgroundColor: "white",
-        elevation:2
+    
+        overflow: "visible",    
     },
     innerContainer:{
         padding: 16,
@@ -68,7 +69,7 @@ const styles = StyleSheet.create({
         height: 200,
         marginBottom: 8,
         borderRadius: 8,
-        overflow: "hidden"
+    
     },
     imagePreview:{
         width: "100%",

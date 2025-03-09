@@ -7,7 +7,8 @@ const Colors = {
     grey: "#9FA5C0",
     white: "#FFFFFF",
     form: "#F4F5F7",
-    divider: "#EDEDED"
+    divider: "#EDEDED",
+    ripple: "#3E0C7C",
 }
 
 export default Colors;

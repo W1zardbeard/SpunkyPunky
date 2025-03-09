@@ -5,6 +5,11 @@ import { Platform } from 'react-native';
 
 
 const Typography = {
+    header: {
+        fontFamily: 'Inter-Bold',
+        fontSize: 28,
+        color: Colors.black
+    },
     h1: {
         fontSize: 22,
         color: Colors.black,
