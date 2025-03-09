@@ -11,7 +11,7 @@ export default function FAB({children, onPress}) {
     <Pressable 
       onPress={onPress} 
         style={styles.button}
-      android_ripple={{color: "#2EDE8A"}}
+      android_ripple={{color: Colors.ripple}}
       > 
       <MaterialCommunityIcons name={"filter"} color={"white"} size={24} />
       </Pressable>  

@@ -64,5 +64,7 @@ export default function Search({ navigation, route }) {
 }
 
 const styles = StyleSheet.create({
- 
+  wrapper:{
+    paddingHorizontal: 16,
+  }
 })

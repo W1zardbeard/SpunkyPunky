@@ -1,10 +1,12 @@
 import React, { memo } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
+import Colors from '../../../constants/colors';
+import Typography from '../../../constants/typography';
 
 const Label = ({ text, ...restProps }) => {
   return (
     <View style={styles.root} {...restProps}>
-      <Text style={styles.text}>{text}</Text>
+      <Text style={[styles.text, Typography.p2, {color: "white"}]}>{text}</Text>
     </View>
   );
 };
@@ -12,9 +14,9 @@ const Label = ({ text, ...restProps }) => {
 const styles = StyleSheet.create({
   root: {
     alignItems: 'center',
-    padding: 8,
-    backgroundColor: '#4499ff',
-    borderRadius: 4,
+    padding: 16,
+    backgroundColor: Colors.primaryGreen,
+    borderRadius: 8,
   },
   text: {
     fontSize: 16,

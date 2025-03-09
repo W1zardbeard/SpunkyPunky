@@ -10,7 +10,7 @@ export default function Button({children, onPress, style}) {
       <Pressable 
         onPress={onPress} 
         style={styles.button} 
-        android_ripple={{color: "#2EDE8A"}}
+        android_ripple={{color: Colors.ripple}}
         > 
         <Text style={[Typography.h3, styles.buttonText]}>{children}</Text>
         </Pressable>  

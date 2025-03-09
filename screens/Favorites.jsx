@@ -51,14 +51,18 @@ export default function Favorites({navigation}) {
 
 
   return (
-    <View>
+    <View style={styles.wrapper}>
        <BeerList 
           beers={favorites} 
           
-            type={"favorites"}
+          type={"favorites"}
         />
     </View>
   )
 }
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+  wrapper:{
+    paddingHorizontal: 16,
+  }
+})
